@@ -4,7 +4,6 @@ import uuid
 
 from contextlib import contextmanager
 
-import intake
 import numpy as np
 import pytest
 import yaml
@@ -536,6 +535,8 @@ def numpy_md(request):
 
 @pytest.fixture(scope="function")
 def data_broker(request, mongo_uri):
+    intake = pytest.importorskip('intake')
+
     TMP_DIR = tempfile.mkdtemp()
     YAML_FILENAME = "intake_test_catalog.yml"
 
