@@ -79,14 +79,12 @@ def create_topics(
     admin_client = AdminClient(admin_client_config)
     log.debug(
         "creating topics '%s' with "
-        "num_partitions=%d replication_factor=%d max_checks=%d seconds_between_checks=%.1f "
-        "admin_client_config=%s",
+        "num_partitions=%d replication_factor=%d max_checks=%d seconds_between_checks=%.1f ",
         topics_to_create,
         num_partitions,
         replication_factor,
         max_checks,
         seconds_between_checks,
-        admin_client_config,
     )
 
     topics_to_create_set = set(topics_to_create)

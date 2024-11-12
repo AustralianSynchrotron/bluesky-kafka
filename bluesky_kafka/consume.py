@@ -118,10 +118,6 @@ class BasicConsumer:
         else:
             self._consumer_config["bootstrap.servers"] = ",".join(bootstrap_servers)
 
-        logger.debug(
-            "BlueskyConsumer configuration:\n%s",
-            self._consumer_config,
-        )
         logger.debug("subscribing to Kafka topic(s): %s", topics)
 
         self._consumer = ConfluentConsumer(self._consumer_config)

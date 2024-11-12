@@ -119,8 +119,6 @@ class BasicProducer:
         else:
             self._producer_config["bootstrap.servers"] = ",".join(bootstrap_servers)
 
-        logger.debug("producer configuration: %s", self._producer_config)
-
         if on_delivery is None:
             self.on_delivery = default_delivery_report
         else:
