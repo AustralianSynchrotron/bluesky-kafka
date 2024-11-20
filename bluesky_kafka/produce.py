@@ -131,9 +131,7 @@ class BasicProducer:
         self._serializer = serializer
 
     def __str__(self):
-        safe_config = dict(self._producer_config)
-        if "sasl.password" in safe_config:
-            safe_config["sasl.password"] = "****"
+        safe_config = redact_config(self._producer_config)
         return (
             f"{type(self)}("
             f"topic='{self.topic}', "
