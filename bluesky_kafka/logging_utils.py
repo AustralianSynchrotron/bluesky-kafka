@@ -1,16 +1,9 @@
 # See https://docs.confluent.io/platform/current/installation/configuration/producer-configs.html and
 #     https://docs.confluent.io/platform/current/installation/configuration/consumer-configs.html
 CONFIG_KEY_WHITELIST = {
+    ##
     # -- Common Keys
     "bootstrap.servers",
-    # "ssl.key.password",
-    # "ssl.keystore.certificate.chain",
-    # "ssl.keystore.key",
-    # "ssl.keystore.location",
-    # "ssl.keystore.password",
-    # "ssl.truststore.certificates",
-    # "ssl.truststore.location",
-    # "ssl.truststore.password",
     "client.dns.lookup",
     "client.id",
     "connections.max.idle.ms",
@@ -72,7 +65,8 @@ CONFIG_KEY_WHITELIST = {
     # "ssl.keymanager.algorithm",
     # "ssl.secure.random.implementation",
     # "ssl.trustmanager.algorithm",
-    # -- Consumer Keys
+    ##
+    # -- Consumer Only Keys
     "key.deserializer",
     "value.deserializer",
     "fetch.min.bytes",
@@ -97,7 +91,8 @@ CONFIG_KEY_WHITELIST = {
     "check.crcs",
     "client.rack",
     "fetch.max.wait.ms",
-    # -- Producer Keys
+    ##
+    # -- Producer Only Keys
     "key.serializer",
     "value.serializer",
     "buffer.memory",
@@ -122,4 +117,13 @@ CONFIG_KEY_WHITELIST = {
 
 
 def redact_config(config):
+    """
+    Takes a consumer/producer config dictionary and makes sure that anything potentially sensitive
+    is masked out by asterisks so it can be safely logged.
+
+    Parameters
+    ----------
+    config : dict
+        Dictionary of configuration information used to construct a consumer or producer.
+    """
     return {k: v if k in CONFIG_KEY_WHITELIST else "****" for k, v in config.items()}
