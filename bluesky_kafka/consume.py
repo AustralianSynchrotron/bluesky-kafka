@@ -130,9 +130,7 @@ class BasicConsumer:
         self.closed = False
 
     def __str__(self):
-        safe_config = dict(self._consumer_config)
-        if "sasl.password" in safe_config:
-            safe_config["sasl.password"] = "****"
+        safe_config = redact_config(self._consumer_config)
         return (
             f"{type(self)}("
             f"topics={self._topics}, "
