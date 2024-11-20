@@ -1,5 +1,6 @@
 import logging
 
+from bluesky_kafka.logging_utils import redact_config
 import msgpack
 import msgpack_numpy as mpn
 
@@ -120,7 +121,7 @@ class BasicConsumer:
 
         logger.debug(
             "BlueskyConsumer configuration:\n%s",
-            self._consumer_config,
+            redact_config(self._consumer_config),
         )
         logger.debug("subscribing to Kafka topic(s): %s", topics)
 
