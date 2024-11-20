@@ -1,5 +1,6 @@
 import logging
 
+from bluesky_kafka.logging_utils import redact_config
 import msgpack
 import msgpack_numpy as mpn
 
@@ -119,7 +120,7 @@ class BasicProducer:
         else:
             self._producer_config["bootstrap.servers"] = ",".join(bootstrap_servers)
 
-        logger.debug("producer configuration: %s", self._producer_config)
+        logger.debug("producer configuration: %s", redact_config(self._producer_config))
 
         if on_delivery is None:
             self.on_delivery = default_delivery_report
