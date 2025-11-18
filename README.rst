@@ -2,12 +2,11 @@
 bluesky-kafka
 ===============================
 
-.. image:: https://github.com/bluesky/bluesky-kafka/actions/workflows/tests.yml/badge.svg
-        :target: https://github.com/bluesky/bluesky-kafka/actions
+Archived!
+---------
 
-.. image:: https://img.shields.io/pypi/v/bluesky-kafka.svg
-        :target: https://pypi.python.org/pypi/bluesky-kafka
-
+For a local message bus, use Bluesky's 0MQ proxy.
+For broadcasting Bluesky data to remote consumers, use Tiled's Streaming Websockets feature.
 
 Kafka integration for bluesky.
 
