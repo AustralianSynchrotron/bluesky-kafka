@@ -7,6 +7,8 @@ A fork of bluesky's Kafka integration (https://github.com/bluesky/bluesky-kafka/
 The original codebase has been archived so we maintaining our own version as we use it in a lot of
 services at the Australian Synchrotron.
 
+For now we are only publishing packages internally.
+
 * Free software: 3-clause BSD license
 
 Features
