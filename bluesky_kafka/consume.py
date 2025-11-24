@@ -84,7 +84,8 @@ class BasicConsumer:
         group_id,
         consumer_config=None,
         polling_duration=0.05,
-        deserializer=msgpack.loads,
+        # `timestamp=3` returns datetime objects for msgpack datetime values
+        deserializer=lambda b: msgpack.loads(b, raw=False, timestamp=3),
         process_message=None,
     ):
         from confluent_kafka import Consumer as ConfluentConsumer
