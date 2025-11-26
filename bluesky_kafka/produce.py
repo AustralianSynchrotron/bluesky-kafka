@@ -97,7 +97,7 @@ class BasicProducer:
         producer_config=None,
         on_delivery=None,
         # enable datetime support in msgpack
-        serializer=lambda obj: msgpack.dumps(obj, datetime=True),
+        serializer=msgpack.dumps
     ):
         from confluent_kafka import Producer as ConfluentProducer
 

@@ -102,7 +102,7 @@ class Publisher(BasicProducer):
         producer_config=None,
         on_delivery=None,
         flush_on_stop_doc=False,
-        serializer=msgpack.dumps,
+        serializer=lambda obj: msgpack.dumps(obj, datetime=True),
     ):
         sanitized_producer_config = {}
         if producer_config is not None:
@@ -218,7 +218,7 @@ class BlueskyConsumer(BasicConsumer):
         group_id,
         consumer_config=None,
         polling_duration=0.05,
-        deserializer=msgpack.loads,
+        deserializer=lambda b: msgpack.loads(b, raw=False, timestamp=3),
         process_document=None,
     ):
         sanitized_consumer_config = {}
@@ -339,7 +339,7 @@ class RemoteDispatcher(Dispatcher):
         group_id,
         consumer_config=None,
         polling_duration=0.05,
-        deserializer=msgpack.loads,
+        deserializer=lambda b: msgpack.loads(b, raw=False, timestamp=3),
     ):
         super().__init__()
 
