@@ -291,7 +291,7 @@ def test_datetime_serialization(name, serializer, deserializer):
     assert "dt" in result
     assert isinstance(result["dt"], datetime)
 
-    assert abs(result["dt"].timestamp() - dt.timestamp()) < 1e-6
+    assert result["dt"].timestamp() == pytest.approx(dt.timestamp(), abs=1e-6)
 
     if name == "pickle":
         assert result["dt"] == dt
