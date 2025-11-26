@@ -218,6 +218,8 @@ class BlueskyConsumer(BasicConsumer):
         group_id,
         consumer_config=None,
         polling_duration=0.05,
+        # `timestamp=3` returns datetime objects for msgpack datetime values
+        # https://msgpack-python.readthedocs.io/en/latest/api.html#msgpack.Packer
         deserializer=lambda b: msgpack.loads(b, raw=False, timestamp=3),
         process_document=None,
     ):
@@ -339,6 +341,8 @@ class RemoteDispatcher(Dispatcher):
         group_id,
         consumer_config=None,
         polling_duration=0.05,
+        # `timestamp=3` returns datetime objects for msgpack datetime values
+        # https://msgpack-python.readthedocs.io/en/latest/api.html#msgpack.Packer
         deserializer=lambda b: msgpack.loads(b, raw=False, timestamp=3),
     ):
         super().__init__()
