@@ -84,6 +84,7 @@ class BasicConsumer:
         group_id,
         consumer_config=None,
         polling_duration=0.05,
+        # `timestamp=3` returns datetime objects for msgpack datetime values
         deserializer=msgpack.loads,
         process_message=None,
     ):

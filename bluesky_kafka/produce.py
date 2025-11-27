@@ -96,7 +96,7 @@ class BasicProducer:
         key,
         producer_config=None,
         on_delivery=None,
-        serializer=msgpack.dumps,
+        serializer=msgpack.dumps
     ):
         from confluent_kafka import Producer as ConfluentProducer
 
